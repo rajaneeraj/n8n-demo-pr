@@ -26,6 +26,20 @@ def add_msg(msg_name: str) -> dict[str, MsgPayload]:
     return {"message": messages_list[msg_id]}
 
 
+
+
+# Route to add a message
+@app.post("/messages1/v1/{msg_name}/")
+def add_msg(msg_name: str) -> dict[str, MsgPayload]:
+    # Generate an ID for the item based on the highest ID in the messages_list
+    msg_id = max(messages_list.keys()) + 1 if messages_list else 0
+    messages_list[msg_id] = MsgPayload(msg_id=msg_id, msg_name=msg_name)
+
+    return {"message": messages_list[msg_id]}
+
+
+print("hello World")
+
 # Route to list all messages
 @app.get("/messages")
 def message_items() -> dict[str, dict[int, MsgPayload]]:
