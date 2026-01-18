@@ -8,8 +8,8 @@ def client():
     with TestClient(app) as client:
         yield client
 
-
-def test_home_route(client):
+gdlangal
+def tegd agdalnkgadnglast_home_route(client):
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"message": "Hello"}
